@@ -1,0 +1,198 @@
+<?php
+
+use App\Application\Devflow;
+use App\Infrastructure\Services\Options;
+use App\Shared\Services\Registry as r;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\checked;
+use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Security\Helpers\t__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function () {
+r::getInstance()->set('screen_parent', 'plugins');
+r::getInstance()->set('screen_child', r::getInstance()->get('cc-plugin')['id']);
+$option = Options::factory();
+?>
+<!-- form start -->
+<form method="post" action="<?= admin_url('plugin/' . r::getInstance()->get('cc-plugin')['id'] . '/'); ?>" data-toggle="validator" autocomplete="off">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-cogs"></i>
+                <h4 class="box-title"><?= esc_html__('Cookie Consent', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i> <?= t__('Update', r::getInstance()->get('cc-plugin')['id']); ?></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?=Devflow::inst()::$APP->flash->display()?>
+
+            <div class="box box-default" id="cc-options-form">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><?= esc_html__('Enable', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <input type="hidden" id="icc_popup_options" name="icc_popup_options" value="{enabled:false}">
+                                <label><?= esc_html__('Enabled', r::getInstance()->get('cc-plugin')['id']); ?></label>
+                                <div class="form-group">
+                                    <div class="ios-switch switch-md">
+                                        <input type="hidden" name="icc_popup_enabled" value="0" />
+                                        <input type="checkbox" class="js-switch" id="icc_popup_enabled" name="icc_popup_enabled" value="1"<?= checked(1, (int) $option->read('icc_popup_enabled'), false); ?> />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><?= esc_html__('1. Position', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <input type="radio" class="minimal" id="position-bottom" name="choose-position" value="bottom" checked> <label for="position-bottom"><?= esc_html__('Banner bottom'); ?></label><br />
+                                <input type="radio" class="minimal" id="position-top" name="choose-position" value="top" <?= $option->read('choose-position') === 'top' ? 'checked' : '' ?>> <label for="position-top"><?= esc_html__('Banner top'); ?></label><br />
+                                <input type="radio" class="minimal" id="position-bottom-left" name="choose-position" value="bottom-left" <?= $option->read('choose-position') === 'bottom-left' ? 'checked' : '' ?>> <label for="position-bottom-left"><?= esc_html__('Floating left', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="radio" class="minimal" id="position-bottom-right" name="choose-position" value="bottom-right" <?= $option->read('choose-position') === 'bottom-right' ? 'checked' : '' ?>> <label for="position-bottom-right"><?= esc_html__('Floating right', r::getInstance()->get('cc-plugin')['id']); ?></label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><?= esc_html__('2. Layout', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <input type="radio" class="minimal" id="layout-block" name="choose-layout" value="block" checked> <label for="layout-block"><?= esc_html__('Block', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="radio" class="minimal" id="layout-edgeless" name="choose-layout" value="edgeless" <?= $option->read('choose-layout') === 'edgeless' ? 'checked' : '' ?>> <label for="layout-edgeless"><?= esc_html__('Edgeless', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="radio" class="minimal" id="layout-classic" name="choose-layout" value="classic" <?= $option->read('choose-layout') === 'classic' ? 'checked' : '' ?>> <label for="layout-classic"><?= esc_html__('Classic', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="radio" class="minimal" id="layout-wire" name="choose-layout" value="wire" <?= $option->read('choose-layout') === 'wire' ? 'checked' : '' ?>> <label for="layout-wire"><?= esc_html__('Wire', r::getInstance()->get('cc-plugin')['id']); ?></label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><?= esc_html__('3. Palette', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <span id="choose-colours" class="choose-colours"></span>
+                                <script>let selected = "<?= $option->read('theme-selector') ?>";</script>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><?= esc_html__('4. Learn more link', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <input type="radio" class="minimal" id="aboutcookies" name="policy" value="aboutcookies" checked>
+                                <label for="aboutcookies"><?= t__(sprintf('Link to <a href="%s">%s <i class="fa fa-external-link" aria-hidden="true"></i></a>.', '//cookiesandyou.com', 'cookiesandyou.com'), r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="radio" class="minimal" id="policylink" name="policy" value="policylink" <?= $option->read('policy') === 'policylink' ? 'checked' : '' ?>>
+                                <label for="policylink"><?= esc_html__('Link to your own policy (leave empty to disable link)', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="text" class="form-control" name="link-href" placeholder="www.example.com/cookiepolicy" value="<?= $option->read('link-href') ?>" onclick="document.getElementById('policylink').checked = true;" />
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><?= esc_html__('5. Compliance type', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <input type="radio" class="minimal" id="only-tell" name="choose-cookie-compliance" value="info" checked> <label for="only-tell"><?= esc_html__('Just tell users that we use cookies', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="radio" class="minimal" id="let-opt-out" name="choose-cookie-compliance" value="opt-out" <?= $option->read('choose-cookie-compliance') == 'opt-out' ? 'checked' : '' ?>> <label for="let-opt-out"><?= esc_html__('Let users opt out of cookies (Advanced)', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <input type="radio" class="minimal" id="ask-to-opt" name="choose-cookie-compliance" value="opt-in" <?= $option->read('choose-cookie-compliance') == 'opt-in' ? 'checked' : '' ?>> <label for="ask-to-opt"><?= esc_html__('Ask users to opt into cookies (Advanced)', r::getInstance()->get('cc-plugin')['id']); ?></label><br />
+                                <p><?= t__(sprintf('For more information about compliance see <a href="%s">documentation <i class="fa fa-external-link" aria-hidden="true"></i></a>.', '//www.osano.com/articles/cookie-compliance'), r::getInstance()->get('cc-plugin')['id']); ?></p>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><?= esc_html__('6. Custom text', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <textarea name="message-text" class="form-control" id="message-text" placeholder="This website uses cookies to ensure you get the best experience on our website." maxlength="300"><?= $option->read('message-text') ?></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <p><b><?= esc_html__('Dismiss button text', r::getInstance()->get('cc-plugin')['id']); ?></b></p><input type="text" class="form-control" name="dismiss-text" placeholder="Got it!" maxlength="30"  value="<?= $option->read('dismiss-text') ?>" /><br />
+                                <span id="text-accept-container"><p><b><?= esc_html__('Accept button text', r::getInstance()->get('cc-plugin')['id']); ?></b></p><input type="text" class="form-control" name="allow-text" placeholder="Allow cookies" maxlength="30" value="<?= $option->read('allow-text') ?>" /></span>
+                            </div>
+
+                            <div class="form-group">
+                                <span id="text-policylink-container"><p><b><?= esc_html__('Policy link text', r::getInstance()->get('cc-plugin')['id']); ?></b></p><input type="text" class="form-control" name="link-text" placeholder="Learn more" maxlength="30" value="<?= $option->read('link-text') ?>" /></span><br />
+                                <span id="text-deny-container"><p><b><?= esc_html__('Deny button text', r::getInstance()->get('cc-plugin')['id']); ?></b></p><input type="text" class="form-control" name="deny-text" placeholder="Refuse cookies" maxlength="30" value="<?= $option->read('deny-text') ?>" /></span>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><span style="color:gray"><?= esc_html__('Advanced', r::getInstance()->get('cc-plugin')['id']); ?></span>: <?= esc_html__('Custom attributes', r::getInstance()->get('cc-plugin')['id']); ?></h4>
+                            <div class="form-group">
+                                <textarea style="height: 150px;" class="form-control" name="custom-attributes" id="custom-attributes"><?= $option->read('custom-attributes') ?></textarea>
+
+                                <p><?= esc_html__('This overwrites all other options.', r::getInstance()->get('cc-plugin')['id']); ?></p>
+                                <p><?= t__(sprintf('List of available attributes can be found in Cookie Consent <a href="%s">documentation</a>.', '//www.osano.com/cookieconsent/documentation/javascript-api/'), r::getInstance()->get('cc-plugin')['id']); ?></p>
+                                <p>
+                                    <?= esc_html__('Example:', r::getInstance()->get('cc-plugin')['id']); ?><br />
+                                    <code>palette:{popup:{background:"#fff"},button:{background:"#aa0000"}}</code>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</form>
+<!-- form end -->
+<?php }); ?>

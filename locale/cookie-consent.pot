@@ -1,0 +1,152 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Cookie Consent\n"
+"POT-Creation-Date: 2024-12-13 11:07-0800\n"
+"PO-Revision-Date: 2024-12-08 09:13-0800\n"
+"Last-Translator: \n"
+"Language-Team: Joshua Parker\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: cookie-consent\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: t__;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: locale\n"
+"X-Poedit-SearchPathExcluded-1: assets\n"
+
+#: Controllers/CookieConsentController.php:55
+msgid "Access denied."
+msgstr ""
+
+#: Controllers/CookieConsentController.php:66
+msgid "Update error."
+msgstr ""
+
+#: Controllers/CookieConsentController.php:70
+msgid "Updated successfully."
+msgstr ""
+
+#: CookieConsentPlugin.php:42 view/index.phtml:26
+msgid "Cookie Consent"
+msgstr ""
+
+#: view/index.phtml:29
+msgid "Update"
+msgstr ""
+
+#: view/index.phtml:43
+msgid "Enable"
+msgstr ""
+
+#: view/index.phtml:46
+msgid "Enabled"
+msgstr ""
+
+#: view/index.phtml:64
+msgid "1. Position"
+msgstr ""
+
+#: view/index.phtml:66
+msgid "Banner bottom"
+msgstr ""
+
+#: view/index.phtml:67
+msgid "Banner top"
+msgstr ""
+
+#: view/index.phtml:68
+msgid "Floating left"
+msgstr ""
+
+#: view/index.phtml:69
+msgid "Floating right"
+msgstr ""
+
+#: view/index.phtml:81
+msgid "2. Layout"
+msgstr ""
+
+#: view/index.phtml:83
+msgid "Block"
+msgstr ""
+
+#: view/index.phtml:84
+msgid "Edgeless"
+msgstr ""
+
+#: view/index.phtml:85
+msgid "Classic"
+msgstr ""
+
+#: view/index.phtml:86
+msgid "Wire"
+msgstr ""
+
+#: view/index.phtml:98
+msgid "3. Palette"
+msgstr ""
+
+#: view/index.phtml:113
+msgid "4. Learn more link"
+msgstr ""
+
+#: view/index.phtml:118
+msgid "Link to your own policy (leave empty to disable link)"
+msgstr ""
+
+#: view/index.phtml:131
+msgid "5. Compliance type"
+msgstr ""
+
+#: view/index.phtml:133
+msgid "Just tell users that we use cookies"
+msgstr ""
+
+#: view/index.phtml:134
+msgid "Let users opt out of cookies (Advanced)"
+msgstr ""
+
+#: view/index.phtml:135
+msgid "Ask users to opt into cookies (Advanced)"
+msgstr ""
+
+#: view/index.phtml:148
+msgid "6. Custom text"
+msgstr ""
+
+#: view/index.phtml:154
+msgid "Dismiss button text"
+msgstr ""
+
+#: view/index.phtml:155
+msgid "Accept button text"
+msgstr ""
+
+#: view/index.phtml:159
+msgid "Policy link text"
+msgstr ""
+
+#: view/index.phtml:160
+msgid "Deny button text"
+msgstr ""
+
+#: view/index.phtml:172
+msgid "Advanced"
+msgstr ""
+
+#: view/index.phtml:172
+msgid "Custom attributes"
+msgstr ""
+
+#: view/index.phtml:176
+msgid "This overwrites all other options."
+msgstr ""
+
+#: view/index.phtml:179
+msgid "Example:"
+msgstr ""

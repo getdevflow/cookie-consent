@@ -1,0 +1,29 @@
+{
+  "name": "getdevflow/cookie-consent",
+  "description": "Cookie Consent helps you comply with the EU regulations regarding the usage of website cookies.",
+  "type": "devflow-plugin",
+  "keywords": ["cookieconsent","cookie-consent","gdpr","cookies"],
+  "license": "GPL-2.0-only",
+  "authors": [
+    {
+      "name": "Joshua Parker",
+      "email": "joshua@joshuaparker.dev"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "oomphinc/composer-installers-extender": "^2.0"
+  },
+  "extra": {
+    "installer-name": "CookieConsent",
+    "installer-types": ["devflow-plugin"]
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "oomphinc/composer-installers-extender": true
+    }
+  }
+}
