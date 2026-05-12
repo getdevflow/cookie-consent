@@ -1,11 +1,11 @@
 ## Description
 Cookie Consent helps you comply with the EU regulations regarding the usage of website cookies.
 
-> __Requires__ Devflow Version: 1.2.0
+> __Requires__ Devflow Version: 2.x
 
-> __Tested Up To:__ 1.2.0
+> __Tested Up To:__ 2.0.0
 
-> __Requires PHP:__ 8.3+
+> __Requires PHP:__ 8.4+
 
 > __Stable Tag:__ 2.0.0
 
@@ -21,8 +21,7 @@ Cookie Consent helps you comply with the EU regulations regarding the usage of w
 - Custom attributes
 
 ## Localization
-* English
-* Spanish
+Portuguese, Chines (Simplified), German, English, Spanish, French, Italian Japanese, and Russian
 
 ## Composer Installation
 1. Start a new shell session.
@@ -34,6 +33,7 @@ In your own presentation layer for a frontend, you will need to add the `App\Sha
 
 ### 2.0.0
 - Api change for enqueue functions.
+- Updates for new Devflow v2.
 
 ### 1.0.0
 - Initial release

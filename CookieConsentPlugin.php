@@ -9,6 +9,7 @@ use App\Shared\Services\Registry;
 use App\Shared\Services\Utils;
 use Codefy\CommandBus\Exceptions\CommandPropertyNotFoundException;
 use Codefy\QueryBus\UnresolvableQueryHandlerException;
+use Plugin\CookieConsent\Controllers\CookieConsentController;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\SimpleCache\InvalidArgumentException;
@@ -16,6 +17,7 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use Qubus\EventDispatcher\ActionFilter\Filter;
 use Qubus\Exception\Data\TypeException;
 use Qubus\Exception\Exception;
+use Qubus\Http\ServerRequest;
 use ReflectionException;
 
 use function App\Shared\Helpers\add_plugins_submenu;
@@ -71,13 +73,11 @@ final class CookieConsentPlugin extends Plugin
 
     /**
      * @return void
-     * @throws CommandPropertyNotFoundException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      * @throws TypeException
-     * @throws UnresolvableQueryHandlerException
      */
     public function registerSubmenu(): void
     {
@@ -104,7 +104,7 @@ final class CookieConsentPlugin extends Plugin
         if ($this->option->read('icc_popup_enabled') === 1) {
             cms_enqueue_css(
                 config: 'plugin',
-                asset: $this->url() . '/assets/css/cookieconsent.min.css',
+                asset: $this->url() . '/css/cookieconsent.min.css',
                 slug: $this->id()
             );
         }
@@ -125,7 +125,7 @@ final class CookieConsentPlugin extends Plugin
         if ($this->option->read('icc_popup_enabled') === 1) {
             cms_enqueue_js(
                 config: 'plugin',
-                asset: $this->url() . '/assets/js/cookieconsent.min.js',
+                asset: $this->url() . '/js/cookieconsent.min.js',
                 slug: $this->id()
             );
 
@@ -142,7 +142,6 @@ final class CookieConsentPlugin extends Plugin
     /**
      * @return void
      * @throws Exception
-     * @throws ReflectionException
      */
     public function enqueueBackEndCss(): void
     {
@@ -163,7 +162,7 @@ final class CookieConsentPlugin extends Plugin
 
         cms_enqueue_css(
             config: 'plugin',
-            asset: $this->url() . '/assets/css/admin.css',
+            asset: $this->url() . '/css/admin.css',
             slug: $this->id()
         );
     }
@@ -171,7 +170,6 @@ final class CookieConsentPlugin extends Plugin
     /**
      * @return void
      * @throws Exception
-     * @throws ReflectionException
      */
     public function enqueueBackEndJs(): void
     {
@@ -192,7 +190,7 @@ final class CookieConsentPlugin extends Plugin
 
         cms_enqueue_js(
             config: 'plugin',
-            asset: $this->url() . '/assets/js/scripts.js',
+            asset: $this->url() . '/js/scripts.js',
             slug: $this->id()
         );
     }
@@ -203,9 +201,10 @@ final class CookieConsentPlugin extends Plugin
      */
     public function render(): void
     {
-        Filter::getInstance()->addFilter('plugin_route', function ($router) {
-            $router->setDefaultNamespace('\\Plugin\\CookieConsent\\Controllers');
-            $router->map(['GET', 'POST'], '/admin/plugin/cookie-consent/', 'CookieConsentController@index');
+        Filter::getInstance()->addFilter('plugin.route', function ($router) {
+            $router->map(['GET', 'POST'], '/admin/plugin/cookie-consent/', function (ServerRequest $request, CookieConsentController $controller) {
+                return $controller->index($request);
+            });
         }, 5);
     }
 }
