@@ -1,0 +1,172 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Cookie Consent\n"
+"POT-Creation-Date: 2026-05-11 14:08-0600\n"
+"PO-Revision-Date: 2026-05-11 14:12-0600\n"
+"Last-Translator: \n"
+"Language-Team: Joshua Parker\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: cookie-consent\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: t__;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: locale\n"
+"X-Poedit-SearchPathExcluded-1: assets\n"
+
+#: Controllers/CookieConsentController.php:41
+msgid "Access denied."
+msgstr "В доступе отказано."
+
+#: Controllers/CookieConsentController.php:52
+#, fuzzy
+msgid "Update error."
+msgstr "Ошибка обновления."
+
+#: Controllers/CookieConsentController.php:56
+msgid "Updated successfully."
+msgstr "Обновлено успешно."
+
+#: CookieConsentPlugin.php:42
+msgid "Cookie Consent"
+msgstr "Согласие на использование файлов cookie"
+
+#: view/index.phtml:28
+msgid "Update"
+msgstr "Обновить"
+
+#: view/index.phtml:42
+msgid "Enable"
+msgstr "Включить"
+
+#: view/index.phtml:45
+msgid "Enabled"
+msgstr "Включено"
+
+#: view/index.phtml:63
+#, fuzzy
+msgid "1. Position"
+msgstr "1. Положение"
+
+#: view/index.phtml:65
+#, fuzzy
+msgid "Banner bottom"
+msgstr "Нижняя часть баннера"
+
+#: view/index.phtml:66
+#, fuzzy
+msgid "Banner top"
+msgstr "Верхняя часть баннера"
+
+#: view/index.phtml:67
+#, fuzzy
+msgid "Floating left"
+msgstr "Плавающий левый поворот"
+
+#: view/index.phtml:68
+#, fuzzy
+msgid "Floating right"
+msgstr "Плавающий правый борт"
+
+#: view/index.phtml:80
+#, fuzzy
+msgid "2. Layout"
+msgstr "2. Планировка"
+
+#: view/index.phtml:82
+#, fuzzy
+msgid "Block"
+msgstr "Блок"
+
+#: view/index.phtml:83
+#, fuzzy
+msgid "Edgeless"
+msgstr "Edgeless"
+
+#: view/index.phtml:84
+msgid "Classic"
+msgstr "Классический"
+
+#: view/index.phtml:85
+msgid "Wire"
+msgstr "Провод"
+
+#: view/index.phtml:97
+#, fuzzy
+msgid "3. Palette"
+msgstr "3. Палитра"
+
+#: view/index.phtml:112
+#, fuzzy
+msgid "4. Learn more link"
+msgstr "4. Узнать больше по ссылке"
+
+#: view/index.phtml:117
+#, fuzzy
+msgid "Link to your own policy (leave empty to disable link)"
+msgstr "Ссылка на вашу собственную политику (оставьте пустую, чтобы отключить ссылку)"
+
+#: view/index.phtml:130
+#, fuzzy
+msgid "5. Compliance type"
+msgstr "5. Тип соответствия"
+
+#: view/index.phtml:132
+#, fuzzy
+msgid "Just tell users that we use cookies"
+msgstr "Просто скажите пользователям, что мы используем cookies"
+
+#: view/index.phtml:133
+#, fuzzy
+msgid "Let users opt out of cookies (Advanced)"
+msgstr "Позвольте пользователям отказаться от использования файлов cookie (расширенное участие)"
+
+#: view/index.phtml:134
+#, fuzzy
+msgid "Ask users to opt into cookies (Advanced)"
+msgstr "Попросите пользователей подписаться на доступ к файлам cookie (расширенное участие)"
+
+#: view/index.phtml:147
+#, fuzzy
+msgid "6. Custom text"
+msgstr "6. Пользовательский текст"
+
+#: view/index.phtml:153
+#, fuzzy
+msgid "Dismiss button text"
+msgstr "Текст кнопки отклонения"
+
+#: view/index.phtml:154
+msgid "Accept button text"
+msgstr "Текст кнопки \"Принять"
+
+#: view/index.phtml:158
+msgid "Policy link text"
+msgstr "Текст ссылки политики"
+
+#: view/index.phtml:159
+#, fuzzy
+msgid "Deny button text"
+msgstr "Текст кнопки «Запрет»"
+
+#: view/index.phtml:171
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#: view/index.phtml:171
+msgid "Custom attributes"
+msgstr "Настроить атрибуты"
+
+#: view/index.phtml:175
+#, fuzzy
+msgid "This overwrites all other options."
+msgstr "Это перезаписывает все остальные варианты."
+
+#: view/index.phtml:178
+msgid "Example:"
+msgstr "Пример:"
