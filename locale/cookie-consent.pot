@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cookie Consent\n"
-"POT-Creation-Date: 2024-12-13 11:07-0800\n"
+"POT-Creation-Date: 2026-05-11 14:08-0600\n"
 "PO-Revision-Date: 2024-12-08 09:13-0800\n"
 "Last-Translator: \n"
 "Language-Team: Joshua Parker\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: cookie-consent\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: t__;esc_html__\n"
@@ -19,134 +19,134 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: locale\n"
 "X-Poedit-SearchPathExcluded-1: assets\n"
 
-#: Controllers/CookieConsentController.php:55
+#: Controllers/CookieConsentController.php:41
 msgid "Access denied."
 msgstr ""
 
-#: Controllers/CookieConsentController.php:66
+#: Controllers/CookieConsentController.php:52
 msgid "Update error."
 msgstr ""
 
-#: Controllers/CookieConsentController.php:70
+#: Controllers/CookieConsentController.php:56
 msgid "Updated successfully."
 msgstr ""
 
-#: CookieConsentPlugin.php:42 view/index.phtml:26
+#: CookieConsentPlugin.php:42
 msgid "Cookie Consent"
 msgstr ""
 
-#: view/index.phtml:29
+#: view/index.phtml:28
 msgid "Update"
 msgstr ""
 
-#: view/index.phtml:43
+#: view/index.phtml:42
 msgid "Enable"
 msgstr ""
 
-#: view/index.phtml:46
+#: view/index.phtml:45
 msgid "Enabled"
 msgstr ""
 
-#: view/index.phtml:64
+#: view/index.phtml:63
 msgid "1. Position"
 msgstr ""
 
-#: view/index.phtml:66
+#: view/index.phtml:65
 msgid "Banner bottom"
 msgstr ""
 
-#: view/index.phtml:67
+#: view/index.phtml:66
 msgid "Banner top"
 msgstr ""
 
-#: view/index.phtml:68
+#: view/index.phtml:67
 msgid "Floating left"
 msgstr ""
 
-#: view/index.phtml:69
+#: view/index.phtml:68
 msgid "Floating right"
 msgstr ""
 
-#: view/index.phtml:81
+#: view/index.phtml:80
 msgid "2. Layout"
 msgstr ""
 
-#: view/index.phtml:83
+#: view/index.phtml:82
 msgid "Block"
 msgstr ""
 
-#: view/index.phtml:84
+#: view/index.phtml:83
 msgid "Edgeless"
 msgstr ""
 
-#: view/index.phtml:85
+#: view/index.phtml:84
 msgid "Classic"
 msgstr ""
 
-#: view/index.phtml:86
+#: view/index.phtml:85
 msgid "Wire"
 msgstr ""
 
-#: view/index.phtml:98
+#: view/index.phtml:97
 msgid "3. Palette"
 msgstr ""
 
-#: view/index.phtml:113
+#: view/index.phtml:112
 msgid "4. Learn more link"
 msgstr ""
 
-#: view/index.phtml:118
+#: view/index.phtml:117
 msgid "Link to your own policy (leave empty to disable link)"
 msgstr ""
 
-#: view/index.phtml:131
+#: view/index.phtml:130
 msgid "5. Compliance type"
 msgstr ""
 
-#: view/index.phtml:133
+#: view/index.phtml:132
 msgid "Just tell users that we use cookies"
 msgstr ""
 
-#: view/index.phtml:134
+#: view/index.phtml:133
 msgid "Let users opt out of cookies (Advanced)"
 msgstr ""
 
-#: view/index.phtml:135
+#: view/index.phtml:134
 msgid "Ask users to opt into cookies (Advanced)"
 msgstr ""
 
-#: view/index.phtml:148
+#: view/index.phtml:147
 msgid "6. Custom text"
 msgstr ""
 
-#: view/index.phtml:154
+#: view/index.phtml:153
 msgid "Dismiss button text"
 msgstr ""
 
-#: view/index.phtml:155
+#: view/index.phtml:154
 msgid "Accept button text"
 msgstr ""
 
-#: view/index.phtml:159
+#: view/index.phtml:158
 msgid "Policy link text"
 msgstr ""
 
-#: view/index.phtml:160
+#: view/index.phtml:159
 msgid "Deny button text"
 msgstr ""
 
-#: view/index.phtml:172
+#: view/index.phtml:171
 msgid "Advanced"
 msgstr ""
 
-#: view/index.phtml:172
+#: view/index.phtml:171
 msgid "Custom attributes"
 msgstr ""
 
-#: view/index.phtml:176
+#: view/index.phtml:175
 msgid "This overwrites all other options."
 msgstr ""
 
-#: view/index.phtml:179
+#: view/index.phtml:178
 msgid "Example:"
 msgstr ""
