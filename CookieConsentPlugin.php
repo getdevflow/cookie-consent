@@ -40,7 +40,7 @@ final class CookieConsentPlugin extends Plugin
             'name' => esc_html__(string: 'Cookie Consent', domain: 'cookie-consent'),
             'id' => 'cookie-consent',
             'author' => 'Joshua Parker',
-            'version' => '2.0.0',
+            'version' => '2.0.1',
             'description' => 'Cookie Consent helps you comply with the EU regulations 
             regarding the usage of website cookies.',
             'basename' => plugin_basename(dirname(__FILE__)),
