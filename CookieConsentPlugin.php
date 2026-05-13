@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace Plugin\CookieConsent;
 
+use App\Application\Devflow;
 use App\Infrastructure\Services\Plugin;
 use App\Shared\Services\Registry;
 use App\Shared\Services\Utils;
-use Codefy\CommandBus\Exceptions\CommandPropertyNotFoundException;
-use Codefy\QueryBus\UnresolvableQueryHandlerException;
 use Plugin\CookieConsent\Controllers\CookieConsentController;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use Qubus\EventDispatcher\ActionFilter\Action;
-use Qubus\EventDispatcher\ActionFilter\Filter;
 use Qubus\Exception\Data\TypeException;
 use Qubus\Exception\Exception;
 use Qubus\Http\ServerRequest;
+use Qubus\Routing\Exceptions\TooLateToAddNewRouteException;
 use ReflectionException;
 
 use function App\Shared\Helpers\add_plugins_submenu;
@@ -28,7 +27,6 @@ use function App\Shared\Helpers\plugin_dir_path;
 use function App\Shared\Helpers\plugin_url;
 use function dirname;
 use function Qubus\Security\Helpers\esc_html__;
-use function strpos;
 
 final class CookieConsentPlugin extends Plugin
 {
@@ -150,12 +148,12 @@ final class CookieConsentPlugin extends Plugin
         }
 
         if (
-            strpos(
-                Utils::getPathInfo(
+                !str_starts_with(
+                    Utils::getPathInfo(
+                        '/admin/plugin/' . $this->id() . '/'
+                    ),
                     '/admin/plugin/' . $this->id() . '/'
-                ),
-                '/admin/plugin/' . $this->id() . '/'
-            ) !== 0
+                )
         ) {
             return;
         }
@@ -178,12 +176,12 @@ final class CookieConsentPlugin extends Plugin
         }
 
         if (
-                strpos(
+                !str_starts_with(
                     Utils::getPathInfo(
                         '/admin/plugin/' . $this->id() . '/'
                     ),
                     '/admin/plugin/' . $this->id() . '/'
-                ) !== 0
+                )
         ) {
             return;
         }
@@ -197,14 +195,14 @@ final class CookieConsentPlugin extends Plugin
 
     /**
      * @return void
-     * @throws ReflectionException
+     * @throws TooLateToAddNewRouteException
      */
     public function render(): void
     {
-        Filter::getInstance()->addFilter('plugin.route', function ($router) {
-            $router->map(['GET', 'POST'], '/admin/plugin/cookie-consent/', function (ServerRequest $request, CookieConsentController $controller) {
-                return $controller->index($request);
-            });
-        }, 5);
+        $router = Devflow::$PHP->router;
+
+        $router->map(['GET', 'POST'], '/admin/plugin/cookie-consent/', function (ServerRequest $request, CookieConsentController $controller) {
+            return $controller->index($request);
+        });
     }
 }
