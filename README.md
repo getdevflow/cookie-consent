@@ -31,6 +31,9 @@ In your own presentation layer for a frontend, you will need to add the `App\Sha
 
 ## Changelog
 
+### 2.0.1
+- Fixed route loading issue.
+
 ### 2.0.0
 - Api change for enqueue functions.
 - Updates for new Devflow v2.
