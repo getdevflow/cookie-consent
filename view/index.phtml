@@ -97,7 +97,7 @@ r::getInstance()->set('screen_child', 'cookie-consent');
                             <h4><?= esc_html__('3. Palette', 'cookie-consent'); ?></h4>
                             <div class="form-group">
                                 <span id="choose-colours" class="choose-colours"></span>
-                                <script>let selected = "<?= get_option(key: 'theme-selector') ?>";</script>
+                                <script>window.CookieConsentAdmin = {selectedTheme: <?= json_encode((string) get_option(key: 'theme-selector'), JSON_THROW_ON_ERROR) ?>};</script>
                             </div>
                         </div>
                         <!-- /.col -->

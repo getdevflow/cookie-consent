@@ -39,8 +39,9 @@ final class CookieConsentPlugin extends Plugin
         $plugin = [
             'name' => esc_html__(string: 'Cookie Consent', domain: 'cookie-consent'),
             'id' => 'cookie-consent',
+            'slug' => 'CookieConsent',
             'author' => 'Joshua Parker',
-            'version' => '2.0.1',
+            'version' => '2.1.0',
             'description' => 'Cookie Consent helps you comply with the EU regulations 
             regarding the usage of website cookies.',
             'basename' => plugin_basename(dirname(__FILE__)),
@@ -89,8 +90,10 @@ final class CookieConsentPlugin extends Plugin
 
     /**
      * @return void
+     * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
+     * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      */
     public function enqueueFrontEndCss(): void
@@ -110,8 +113,10 @@ final class CookieConsentPlugin extends Plugin
 
     /**
      * @return void
+     * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
+     * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      */
     public function enqueueFrontEndJs(): void
@@ -131,15 +136,20 @@ final class CookieConsentPlugin extends Plugin
                 if (Utils::isAdmin()) {
                     return;
                 }
-                $config = $this->option->read('icc_popup_options');
-                echo '<script>window.cookieconsent.initialise(' . $config . ');</script>';
+                cms_enqueue_js(
+                    config: 'plugin',
+                    asset: $this->url() . '/js/cookieconsent-init.js',
+                    slug: $this->id()
+                );
             }
         }
     }
 
     /**
      * @return void
-     * @throws Exception
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     * @throws ReflectionException
      */
     public function enqueueBackEndCss(): void
     {
@@ -167,7 +177,9 @@ final class CookieConsentPlugin extends Plugin
 
     /**
      * @return void
-     * @throws Exception
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     * @throws ReflectionException
      */
     public function enqueueBackEndJs(): void
     {
@@ -201,8 +213,15 @@ final class CookieConsentPlugin extends Plugin
     {
         $router = Devflow::$PHP->router;
 
-        $router->map(['GET', 'POST'], '/admin/plugin/cookie-consent/', function (ServerRequest $request, CookieConsentController $controller) {
-            return $controller->index($request);
+        $router->map(
+            ['GET', 'POST'],
+            '/admin/plugin/cookie-consent/',
+            function (ServerRequest $request, CookieConsentController $controller) {
+                return $controller->index($request);
+            }
+        );
+        $router->get('/cookie-consent/config', function (CookieConsentController $controller) {
+            return $controller->config();
         });
     }
 }
